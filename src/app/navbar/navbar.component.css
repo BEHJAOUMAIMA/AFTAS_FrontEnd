@@ -15,13 +15,20 @@
 }
 
 .form-input{
-  width: 300px;
+  width: 500px;
   height: 40px;
-  text-indent: 33px;
-
+  border: none;
+  border-bottom: white solid 1px;
+  border-radius: 0;
 }
 
 .form-input:focus{
   box-shadow: none;
   border:none;
+}
+.search-btn{
+  background-color: #892c5a !important;
+  width: 120px;
+  border: none;
+  font-weight: normal;
 }
