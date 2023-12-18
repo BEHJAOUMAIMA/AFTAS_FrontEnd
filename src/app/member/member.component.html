@@ -5,7 +5,7 @@
       <p class="my-auto fs-3 text-white">Members</p>
     </div>
 
-    <button class="btn btn-light border-0 text-white" style="width: 150px; background-color: #892c5a"><span><i class="fas fa-plus me-2" style="font-size: 12px"></i></span>Add Member</button>
+    <button data-bs-toggle="modal" data-bs-target="#addMemberModal" class="btn btn-light border-0 text-white" style="width: 150px; background-color: #892c5a"><span><i class="fas fa-plus me-2" style="font-size: 12px"></i></span>Add Member</button>
   </div>
   <div class="table-responsive">
     <table class="table table-striped custom-table">
@@ -22,17 +22,72 @@
         </tr>
       </thead>
       <tbody>
-        <tr scope="row">
-          <td class="text-center">1</td>
-          <td class="text-center"><a>2023 December 12</a></td>
-          <td class="text-center">BEHJA</td>
-          <td class="text-center">Oumaima</td>
-          <td class="text-center">Moroccan</td>
-          <td class="text-center">CIN</td>
-          <td class="text-center">HA216295</td>
+        <tr  *ngFor="let member of members"  scope="row">
+          <td class="text-center">{{ member.id }}</td>
+          <td class="text-center"><a>{{ member.accessionDate | date: 'yyyy MMMM dd' }}</a></td>
+          <td class="text-center">{{ member.familyName }}</td>
+          <td class="text-center">{{ member.name }}</td>
+          <td class="text-center">{{ member.nationality }}</td>
+          <td class="text-center">{{ member.identityDocumentType }}</td>
+          <td class="text-center">{{ member.identityNumber }}</td>
           <td class="text-center"><a href="" class="more">Details</a></td>
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="modal fade" id="addMemberModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content text-white px-4 py-2" style="background-color: #191C24;">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="exampleModalLabel" >Add Member</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control text-white" id="name" name="name" [(ngModel)]="newMember.name" placeholder="Enter name" style="background-color: transparent">
+              </div>
+
+              <div class="mb-3 col-md-6">
+                <label for="familyName" class="form-label">Family Name</label>
+                <input type="text" class="form-control text-white" id="familyName" name="familyName" [(ngModel)]="newMember.familyName" placeholder="Enter family name" style="background-color: transparent">
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label for="accessionDate" class="form-label">Accession Date</label>
+                <input type="datetime-local" class="form-control text-white" id="accessionDate" name="accessionDate" [(ngModel)]="newMember.accessionDate" placeholder="Enter name" style="background-color: transparent">
+              </div>
+
+              <div class="mb-3 col-md-6">
+                <label for="nationality" class="form-label">Nationality</label>
+                <input type="text" class="form-control text-white" id="nationality" name="nationality"  [(ngModel)]="newMember.nationality" placeholder="Enter nationality" style="background-color: transparent">
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label for="identityDocumentType" class="form-label">Identity Document Type</label>
+                <select class="form-select text-white" id="identityDocumentType" name="identityDocumentType" [(ngModel)]="newMember.identityDocumentType" aria-label="Select Identity Document Type" style="background-color: transparent">
+                  <option style="background-color: #191C24" value="{{ IdentityDocumentType.CIN }}">CIN</option>
+                  <option style="background-color: #191C24" value="{{ IdentityDocumentType.CARTE_RESIDENCE }}">Residence Card</option>
+                  <option style="background-color: #191C24" value="{{ IdentityDocumentType.PASSPORT }}">Passport</option>
+                </select>
+              </div>
+              <div class="mb-3 col-md-6">
+                <label for="identityNumber" class="form-label">Identity Number</label>
+                <input type="text" class="form-control text-white" id="identityNumber" name="identityNumber" [(ngModel)]="newMember.identityNumber" placeholder="Enter nationality" style="background-color: transparent">
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-primary" (click)="addMember()">Save</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

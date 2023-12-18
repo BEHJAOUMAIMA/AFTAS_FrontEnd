@@ -82,3 +82,6 @@ h2 {
   margin-bottom: 15px; }
 .custom-table .box td, .custom-table .box th {
 }
+.modal-header .btn-close {
+  color: white !important;
+}
