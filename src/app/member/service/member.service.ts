@@ -9,7 +9,7 @@ import {Member} from "../interface/member";
 export class MemberService {
 
   private apiUrl = "http://127.0.0.1:8080/api/v1";
-  constructor( private http : HttpClient) { }
+  constructor( private http : HttpClient ) { }
 
   public getMembers():Observable<Member[]>{
     return this.http.get<Member[]>(`${this.apiUrl}/members`);

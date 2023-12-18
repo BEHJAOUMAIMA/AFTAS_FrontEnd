@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MemberComponent } from './member/member.component';
 import {NgOptimizedImage} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import { CompetitionComponent } from './competition/competition.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FormsModule} from "@angular/forms";
     SidebarComponent,
     NavbarComponent,
     DashboardComponent,
-    MemberComponent
+    MemberComponent,
+    CompetitionComponent
   ],
   imports: [
     BrowserModule,
