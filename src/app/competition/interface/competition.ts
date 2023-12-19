@@ -7,6 +7,8 @@ export interface Competition {
   NumberOfParticipants: number;
   Location: string;
   amount: number;
+  status?: string;
+
 }
 export interface CompetitionRequest {
   date: string;

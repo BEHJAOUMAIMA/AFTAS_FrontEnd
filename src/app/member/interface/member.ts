@@ -21,3 +21,7 @@ export enum IdentityDocumentType {
   CARTE_RESIDENCE = 'CARTE_RESIDENCE',
   PASSPORT = 'PASSPORT'
 }
+export interface AddMemberRequest {
+  competitionId: number;
+  memberId: number;
+}

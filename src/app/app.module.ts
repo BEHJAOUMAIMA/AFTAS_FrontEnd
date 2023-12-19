@@ -12,6 +12,7 @@ import { MemberComponent } from './member/member.component';
 import {NgOptimizedImage} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import { CompetitionComponent } from './competition/competition.component';
+import { HuntingComponent } from './hunting/hunting.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CompetitionComponent } from './competition/competition.component';
     NavbarComponent,
     DashboardComponent,
     MemberComponent,
-    CompetitionComponent
+    CompetitionComponent,
+    HuntingComponent
   ],
   imports: [
     BrowserModule,

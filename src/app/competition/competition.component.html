@@ -18,6 +18,7 @@
         <th class="text-center" scope="col">Location</th>
         <th class="text-center" scope="col">Number Of Participants</th>
         <th class="text-center" scope="col">Amount</th>
+        <th class="text-center" scope="col">Status</th>
       </tr>
       </thead>
       <tbody>
@@ -30,6 +31,10 @@
         <td class="text-center">{{competition.Location}}</td>
         <td class="text-center">{{competition.NumberOfParticipants}}</td>
         <td class="text-center"><a href="" class="more">{{competition.amount}} MAD</a></td>
+        <td colspan="text-center">
+          <span class="text-center d-flex mx-auto justify-content-center badge bg-{{ getStatusBadgeColor(competition) }}">{{ getStatusTextClass(competition) }}</span>
+        </td>
+
       </tr>
       </tbody>
     </table>

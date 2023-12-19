@@ -55,5 +55,34 @@ export class CompetitionComponent implements OnInit{
       amount: 0.0,
     };
   }
+  getStatus(competition: Competition): string {
+    const currentDate = new Date();
+    const competitionDate = new Date(competition.date);
+
+    if (currentDate < competitionDate) {
+      return 'Pending';
+    } else if (currentDate <= competitionDate) {
+      return 'Ongoing';
+    } else {
+      return 'Closed';
+    }
+  }
+
+  getStatusTextClass(competition: Competition): string {
+    return this.getStatus(competition).toLowerCase();
+  }
+  getStatusBadgeColor(competition: Competition): string {
+    const status = this.getStatus(competition);
+    switch (status) {
+      case 'Pending':
+        return 'info text-dark';
+      case 'Ongoing':
+        return 'success text-white';
+      case 'Closed':
+        return 'danger text-white';
+      default:
+        return '';
+    }
+  }
 
 }

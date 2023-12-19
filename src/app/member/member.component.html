@@ -1,11 +1,14 @@
 <div class="container-fluid" style=" background-color: transparent !important;">
 
   <div class="row d-flex justify-content-between align-items-center my-4">
-    <div class="col-md-3">
+    <div class="col-md-6">
       <p class="my-auto fs-3 text-white">Members</p>
     </div>
+    <div class="col-md-6 d-flex justify-content-between align-items-center">
+      <button data-bs-toggle="modal" data-bs-target="#addMemberModal" class="btn btn-light border-0 text-white me-2" style="width: 350px; background-color: #892c5a"><span><i class="fas fa-plus me-2" style="font-size: 12px"></i></span>Add Member</button>
+      <button data-bs-toggle="modal" data-bs-target="#addMemberToCompetition" class="btn btn-success border-0" style="width: 350px;"><span><i class="fas fa-plus me-2" style="font-size: 12px"></i></span> Add Member to Competition</button>
+    </div>
 
-    <button data-bs-toggle="modal" data-bs-target="#addMemberModal" class="btn btn-light border-0 text-white" style="width: 150px; background-color: #892c5a"><span><i class="fas fa-plus me-2" style="font-size: 12px"></i></span>Add Member</button>
   </div>
   <div class="table-responsive">
     <table class="table table-striped custom-table">
@@ -85,6 +88,37 @@
         </div>
         <div class="modal-footer border-0">
           <button type="button" class="btn btn-primary" (click)="addMember()">Save</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="addMemberToCompetition" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalCompetition">Add Member to Competition</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="row mt-2">
+              <label for="competitionId">Choose a Competition:</label>
+              <select id="competitionId" [(ngModel)]="selectedCompetitionId" name="competitionId">
+                <option *ngFor="let competition of competitions" [value]="competition.id">{{ competition.code }}</option>
+              </select>
+            </div>
+            <div class="row my-4">
+             <label for="memberId"> Member </label>
+             <select id="memberId" [(ngModel)]="selectedMemberId" name="memberId">
+               <option *ngFor="let member of members" [value]="member.id">{{ member.name }}</option>
+             </select>
+           </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="addMemberToCompetition()" class="btn btn-success">Save</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
