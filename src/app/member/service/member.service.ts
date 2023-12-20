@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {AddMemberRequest, Member} from "../interface/member";
+import {Ranking} from "../interface/ranking";
 
 
 @Injectable({
@@ -23,4 +24,13 @@ export class MemberService {
   addMemberToCompetition(newCompetitionMember: AddMemberRequest): Observable<any> {
     return this.http.post(`${this.addMemberToCompetitionUrl}`, newCompetitionMember);
   }
+  getRankingByMemberAndCompetition(memberId: number, competitionId: number): Observable<Ranking> {
+    const url = `${this.apiUrl}/ranking/${competitionId}/${memberId}`;
+    return this.http.get<Ranking>(url);
+  }
+  getMembersByCompetition(competitionId: number): Observable<Member[]> {
+    const url = `${this.apiUrl}/members/by-competition/${competitionId}`;
+    return this.http.get<Member[]>(url);
+  }
+
 }

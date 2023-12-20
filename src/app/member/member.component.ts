@@ -120,5 +120,6 @@ export class MemberComponent implements OnInit{
 
     console.log('Filtered Competitions:', this.competitions);
   }
+
   protected readonly IdentityDocumentType = IdentityDocumentType;
 }
